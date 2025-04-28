@@ -12,5 +12,4 @@ full_audit:facility = LOCAL5
 full_audit:failure = connect renameat unlinkat mkdirat pwrite
 full_audit:success = disconnect renameat unlinkat mkdirat pwrite
 full_audit:prefix = %u|%I|%m|%S
-fruit:resource = xattr
-fruit:nfs_aces = no
+
