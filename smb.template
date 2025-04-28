@@ -1,0 +1,16 @@
+[{workspace}]
+path = {path}/
+writeable = yes
+create mask = 0660
+directory mask = 0770
+force group = zbooxusers
+read list = {rolist}
+write list = {rwlist}
+vfs objects = full_audit catia fruit streams_xattr
+full_audit:priority = INFO
+full_audit:facility = LOCAL5
+full_audit:failure = connect renameat unlinkat mkdirat pwrite
+full_audit:success = disconnect renameat unlinkat mkdirat pwrite
+full_audit:prefix = %u|%I|%m|%S
+fruit:resource = xattr
+fruit:nfs_aces = no
