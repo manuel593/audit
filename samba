@@ -40,13 +40,15 @@
 }
 
 /var/log/samba/audit.log {
-	daily
-	missingok
-	rotate 2
-	postrotate
-		[ ! -f /var/run/samba/smbd.pid ] | kill -HUP `cat /var/run/samba/smbd.pid`
-	endscript
-	compress
-	delaycompress
-	notifempty
+        daily
+        missingok
+        rotate 15
+        postrotate
+                if [ -f /var/run/samba/smbd.pid ]; then
+                        kill -HUP $(cat /var/run/samba/smbd.pid)
+                fi
+        endscript
+        compress
+        delaycompress
+        notifempty
 }
